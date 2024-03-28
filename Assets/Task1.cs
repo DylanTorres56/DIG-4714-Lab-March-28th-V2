@@ -51,10 +51,9 @@ public class Task1 : MonoBehaviour
 
     private void CombineNames() 
     {
-
         for (int i = 0; i < playerFirstNames.Length; i++)
         {
-            playerFullNames[i] = playerFirstNames[Random.RandomRange(0, 19)] + " " + playerLastNames[Random.RandomRange(0, 2)];
+            playerFullNames[i] = playerFirstNames[Random.Range(0, 19)] + " " + playerLastNames[Random.Range(0, 2)];
         }
     }
 }
