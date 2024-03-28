@@ -12,12 +12,24 @@ public class Task1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        SetFirstNames();
+        SetLastNames();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void SetFirstNames()
+    {
+        playerFirstNames[0] = "Bob";
+    }
+
+    private void SetLastNames()
+    {
+        playerLastNames[0] = "A";
+        playerLastNames[1] = "B";
     }
 }
