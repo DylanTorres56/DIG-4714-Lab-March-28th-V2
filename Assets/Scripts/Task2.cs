@@ -1,9 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class Task2 : MonoBehaviour
 {
@@ -32,40 +29,45 @@ public class Task2 : MonoBehaviour
         "Yike"
     };
 
-    string[] randomnamelist = new string[15];
-    HashSet<string> randomnames = new HashSet<string>();
-    HashSet<string> duplicatenames = new HashSet<string>();
+    string[] randomNameList = new string[15];
+    HashSet<string> randomNames = new HashSet<string>();
+    HashSet<string> duplicateNames = new HashSet<string>();
     string firstName;
+
+    bool ArrayPredicate(HashSet<string> thisHash, string thisFirstName)
+    {
+        return thisHash.Contains(thisFirstName);
+    }
 
     private void Start()
     {
-        for(int i=0; i<randomnamelist.Length; i++)
+        for(int i = 0; i < randomNameList.Length; i++)
         {
-            int index = Random.Range(0, 19);
-            randomnamelist[i] = playerFirstNames[index];
-            firstName = randomnamelist[i];
-            randomnames.Add(firstName);	
-        }
+            int randomIndexNum = Random.Range(0, 19);
+            randomNameList[i] = playerFirstNames[randomIndexNum];
+            firstName = randomNameList[i];
 
-        for (int i = 0; i < randomnamelist.Length; i++)
-        {
-            firstName = randomnamelist[i];
-
-            if (!randomnames.Add(firstName))
+            if (ArrayPredicate(randomNames, firstName) == false)
             {
-                duplicatenames.Add(firstName);
+                randomNames.Add(firstName);
             }
+            else 
+            {
+                duplicateNames.Add(firstName);
+            }
+
+
         }
 
         Debug.Log("Created the name array:");
 
-        foreach (string foundName in randomnamelist)
+        foreach (string foundName in randomNameList)
         {
             Debug.Log(foundName);
         }
         
         Debug.Log("The array has duplicate names:");
-        foreach (string dupeName in duplicatenames)
+        foreach (string dupeName in duplicateNames)
         {
             Debug.Log(dupeName);
         }
